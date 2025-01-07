@@ -16,6 +16,7 @@
   },
   "autoload": {
     "files": [
+      "src/attachment.php",
       "src/functions.php"
     ]
   },

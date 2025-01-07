@@ -9,38 +9,6 @@
  * @author          David Sherlock
  */
 
-if ( ! function_exists( 'get_attachment_thumbnail' ) ) {
-	/**
-	 * Generate an image thumbnail based on an attachment ID.
-	 *
-	 * @param int   $attachment_id The attachment ID.
-	 * @param mixed $size          The image size. Default is 'thumbnail'.
-	 * @param array $attr          Optional. Additional attributes for the image markup.
-	 * @param bool  $wrap          Optional. Whether to wrap the image in a div.
-	 *
-	 * @return string The HTML for the image thumbnail.
-	 */
-	function get_attachment_thumbnail( int $attachment_id, $size = 'thumbnail', array $attr = [], bool $wrap = true ): string {
-		$default_attr = [
-			'class' => 'column-thumbnail',
-			'style' => 'width: 32px; height: 32px; object-fit: cover; border-radius: 4px;'
-		];
-
-		if ( ! $attachment_id ) {
-			return '&mdash;';
-		}
-
-		$attr  = wp_parse_args( $attr, $default_attr );
-		$image = wp_get_attachment_image( $attachment_id, $size, false, $attr );
-
-		if ( ! $image ) {
-			return '&mdash;';
-		}
-
-		return $wrap ? sprintf( '<div class="thumbnail">%s</div>', $image ) : $image;
-	}
-}
-
 if ( ! function_exists( 'get_post_thumbnail_html' ) ) {
 	/**
 	 * Generate an image thumbnail based on a post ID.
